@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Games | The Ultimate OG PSX Community</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            let dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            let dropdown = document.querySelector('.dropdown');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const canvas = document.getElementById("linesCanvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let points = [];
+            const numPoints = 50;
+
+            for (let i = 0; i < numPoints; i++) {
+                points.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    dx: (Math.random() - 0.5) * 2,
+                    dy: (Math.random() - 0.5) * 2
+                });
+            }
+
+            let hue = 0; // Start with 0° in HSL (red)
+
+            function drawLines() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                hue += 1; // Increase hue for the RGB shifting effect
+
+                for (let i = 0; i < points.length; i++) {
+                    let p = points[i];
+                    p.x += p.dx;
+                    p.y += p.dy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+                    for (let j = i + 1; j < points.length; j++) {
+                        let q = points[j];
+                        let distance = Math.sqrt((p.x - q.x) ** 2 + (p.y - q.y) ** 2);
+
+                        if (distance < 150) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `hsl(${hue % 360}, 100%, 70%)`; // RGB shifting effect
+                            ctx.lineWidth = 1.5;
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(q.x, q.y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(drawLines);
+            }
+
+            drawLines();
+        });
+
+        window.addEventListener("resize", function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="codes.html">Codes</a></li>
+        <li><a href="applications.html">Applications</a></li>
+    </ul>
+</nav>
+
+
+    <canvas id="linesCanvas"></canvas>
+
+    <div class="dropdown" onclick="toggleDropdown(event)">
+        <button class="dropbtn">Owners <span class="arrow">▼</span></button>
+        <div class="dropdown-content">
+            <a href="#">Grim</a>
+            <a href="#">St4r</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Welcome to Mystery Games!</h1>
+        <p>We are an OG Pet Simulator X community dedicated to creating PSZ!</p>
+        <div class="buttons">
+            <a href="https://discord.gg/MysteryGames" class="btn discord" target="_blank">
+                <img src="https://brandlogos.net/wp-content/uploads/2021/11/discord-logo.png" alt="Discord Logo"> Join Our Discord
+            </a>
+            <a href="https://www.youtube.com/@GrimReaper-et3eb" class="btn youtube" target="_blank">
+                <img src="https://static.vecteezy.com/system/resources/previews/023/986/704/non_2x/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.png" alt="YouTube Logo"> Visit Our YouTube
+            </a>
+            <a href="https://www.roblox.com/games/85300504931569/2-Days-Christmas-Pet-Simulator-X-OG-Reborn" class="btn roblox" target="_blank">
+                <img src="https://static.wikia.nocookie.net/robloxcities/images/d/d2/RobloxLogo.png/revision/latest?cb=20230125021936" alt="Roblox Logo"> Visit Our Roblox Game
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+
