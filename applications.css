@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: black;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Back Button */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(90deg, #ff0077, #ff00ff);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #ff0077;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px #ff00ff;
+}
+
+/* Application Boxes */
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.application-box {
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.7);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.application-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(255, 0, 255, 1);
+}
+
+.apply-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Shine Effect */
+.apply-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-30deg);
+    transition: left 0.4s ease-in-out;
+}
+
+/* Hover Effect */
+.apply-btn:hover::before {
+    left: 150%;
+}
+
+.apply-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.8);
+}
+.shooting-stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+#shootingStarsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+.shooting-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 10px #fff;
+    animation: shooting 2s linear infinite;
+}
+
+@keyframes shooting {
+    0% {
+        transform: translateY(-10vh) translateX(0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(20vw) scale(1);
+        opacity: 0;
+    }
+}
+#galaxyCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+/* Staff Message */
+.staff-message {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #ff0077;
+    width: 350px;
+    text-align: center;
+    transform: scale(0);
+    transition: transform 0.4s ease-in-out, opacity 0.3s;
+    opacity: 0;
+}
+
+.staff-message.show {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Glitch Effect */
+.glitch {
+    font-size: 24px;
+    position: relative;
+    animation: glitch 1s infinite alternate;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px 5px #ff00ff, -2px -2px 5px #00ffff; }
+    100% { text-shadow: -2px -2px 5px #ff00ff, 2px 2px 5px #00ffff; }
+}
+
+/* Fade Text */
+.fade-text {
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Staff List */
+.staff-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.staff-list li {
+    padding: 5px;
+    color: #00ffff;
+    text-shadow: 0px 0px 10px #00ffff;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% { text-shadow: 0px 0px 5px #00ffff; }
+    100% { text-shadow: 0px 0px 15px #00ffff; }
+}
+
+/* Close Button */
+.close-btn {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    background: #ff3333;
+}
+
+/* Hide partner box when staff is clicked */
+.hidden {
+    display: none !important;
+}
+
+/* Staff box zoom animation */
+.staff-zoom {
+    transform: scale(1.3) !important;
+    transition: 0.4s ease-in-out;
+}

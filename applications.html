@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications</title>
+    <link rel="stylesheet" href="applications.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+</head>
+<body>
+    <canvas id="galaxyCanvas"></canvas>
+
+    <canvas id="shootingStarsCanvas"></canvas>
+
+    <div class="shooting-stars-container"></div>
+
+
+    <button class="back-button" onclick="goBack()">Go Back</button>
+
+    <div class="container">
+        <div class="application-box" id="partner-box">
+            <h2>Partner Applications</h2>
+            <p>Apply to become a partner!</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdXSmsPjkfnAxjyvVfSirZhm6nM1mhZljYheyAJf_9M0FrYIw/viewform?usp=dialog" target="_blank" class="apply-btn">Apply Now</a>
+        </div>
+
+        <div class="application-box staff-box" id="staff-box" onclick="showStaffMessage()">
+            <h2>Staff Applications</h2>
+            <p>Join our staff team!</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </div>
+
+    <div class="staff-message" id="staff-message">
+        <h2 class="glitch">Staff Applications are Closed</h2>
+        <p class="fade-text">We are not accepting staff applications at the moment.</p>
+        <h3>Current Staff:</h3>
+        <ul class="staff-list">
+            <li>LocalV</li>
+            <li>Goofy</li>
+            <li>Marshal Sama</li>
+            <li>plane_avgeek</li>
+            <li>Organs</li>
+            <li>Trick</li>
+            <li>Vita</li>
+        </ul>
+        <button class="close-btn" onclick="resetView()">Go Back</button>
+    </div>
+
+    <script src="applications.js"></script>
+
+</body>
+</html>

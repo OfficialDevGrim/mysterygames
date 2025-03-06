@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Codes</title>
+    <link rel="stylesheet" href="codes.css">
+    
+</head>
+<body>
+    <canvas id="spaceCanvas"></canvas>
+
+
+    <!-- ✅ Placed OUTSIDE of codes-container -->
+    <button class="back-button" onclick="goBack()">← Go Back</button>
+
+    <div class="codes-container">
+        <h1>GAME CODES</h1>
+        <p>Click on a code to copy it</p>
+
+        <button class="code-box" onclick="copyCode('Tech')">Tech</button>
+        <button class="code-box" onclick="copyCode('Holydays')">Holydays</button>
+        <button class="code-box" onclick="copyCode('Aliens')">Aliens</button>
+    </div>
+
+    <!-- Copy message -->
+    <div class="copy-message" id="copyMessage">Code Copied!</div>
+
+    <script src="codes.js"></script>
+</body>
+
+</html>
